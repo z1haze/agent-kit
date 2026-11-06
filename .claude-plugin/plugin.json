@@ -1,0 +1,13 @@
+{
+  "name": "agent-kit",
+  "description": "Profile-driven /slice, /idea and /audit workflows with an evidence-only review contract",
+  "author": {
+    "name": "Stephen Hendricks"
+  },
+  "dependencies": [
+    {
+      "name": "mattpocock-skills",
+      "marketplace": "claude-plugins-official"
+    }
+  ]
+}

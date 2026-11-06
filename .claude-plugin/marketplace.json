@@ -1,0 +1,16 @@
+{
+  "name": "agent-kit",
+  "owner": {
+    "name": "Stephen Hendricks"
+  },
+  "description": "Stephen's agent workflow kit",
+  "allowCrossMarketplaceDependenciesOn": [
+    "claude-plugins-official"
+  ],
+  "plugins": [
+    {
+      "name": "agent-kit",
+      "source": "./"
+    }
+  ]
+}
