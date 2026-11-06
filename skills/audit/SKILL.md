@@ -15,7 +15,7 @@ code again; it looks for what only shows across slices:
 - **rules**: a rule broken in code no slice review saw (a shared file several slices edited).
 
 Read the repo's **profile**, `docs/agents/workflow.md`, first. Its gates, smoke runs, actors, tracker and commit style
-apply below. With no profile, tell the user to write one from `${CLAUDE_PLUGIN_ROOT}/templates/workflow.md`, and stop.
+apply below. With no profile, tell the user to run `/agent-kit:setup`, which drafts one, and stop.
 **Green**, the **rules**, the **criteria**, the **decisions** and the **review contract** are as `/slice` defines them
 (`${CLAUDE_PLUGIN_ROOT}/skills/slice/SKILL.md`).
 

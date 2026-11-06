@@ -10,8 +10,7 @@ own and comes back to the user only where a step below says to.
 
 Read the repo's **profile**, `docs/agents/workflow.md`, first. It names the base branch, the actors, the packs, the
 backlog, where specs live, the gates, the smoke runs and the docs to keep in step; every command, path and noun below
-that it defines comes from it. With no profile, tell the user to write one from `${CLAUDE_PLUGIN_ROOT}/templates/workflow.md`,
-and stop.
+that it defines comes from it. With no profile, tell the user to run `/agent-kit:setup`, which drafts one, and stop.
 
 - **Green** means every one of the profile's gates passes, run exactly as written there.
 - The **kit** is this plugin, at `${CLAUDE_PLUGIN_ROOT}`. A **pack** is a folder of rules shared by a family of repos,

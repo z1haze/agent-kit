@@ -4,13 +4,26 @@ The one definition of how a review runs and when it stops, for `/slice`'s review
 (a council of other providers, or the fallback reviewers), the brief, the finding format, the verification and the stop
 rule below are the same, so every run judges findings the same way.
 
+## Settings
+
+The repo sets these in its profile's `## Review` section; one it leaves out takes the default.
+
+| Setting | Default | Used by |
+|---|---|---|
+| **Max rounds** | 3 | Stop |
+| **Pass score** | none | Stop: every reviewer's score must reach it |
+| **Also required** | none | Stop: each condition listed (e.g. "smoke passes") must hold |
+| **Paid seats** | none | Council: the most a review may spend on paid seats, e.g. `up to $3`; none means no paid seats |
+
 ## Who reviews
 
 Check once, at the first round, and state the mode in one line:
 
-- **Council**: when a `council` skill is available, invoke it with the brief below as its request, filled in. It
-  returns each member's verdict, score and findings in the format below.
-- **Fallback**: otherwise, or when council replies `council unavailable`, spawn exactly three agents of type
+- **Council**: invoke the kit's `agent-kit:council` skill with the brief below as its request, filled in, and the
+  **Paid seats** cap. It returns
+  each seat's verdict, score and findings in the format below, or `council unavailable` when the user has no council
+  configured or none of its seats can run.
+- **Fallback**: when council replies `council unavailable`, spawn exactly three agents of type
   `agent-kit:reviewer` in parallel, one per lens: **intent** (does the change do what the intent says, for every
   caller), **rules** (the rules, docs and decisions), **simplicity** (code, tests or guards the intent doesn't need).
   Each gets the brief below plus its lens. Use no other agent type, whatever else is installed: an older `break-it`,
@@ -89,12 +102,15 @@ would apply again go to the decisions.
 
 ## Stop
 
-- **Agreed**: every reviewer's verdict is APPROVE on the current diff, or no blocker or should is open after
-  verification. Stop.
-- **Next round** only when a blocker or should was fixed in behaviour code. A comment, doc or format-only fix needs no
-  new round.
-- **Budget**: 3 rounds. Up to 5 only for security, auth, data loss or concurrency, while a blocker with evidence stays
-  open.
+- **Agreed**: no blocker or should is open after verification (or every reviewer's verdict is APPROVE on the current
+  diff), every reviewer's score reaches the **Pass score**, and every **Also required** condition holds. Stop.
+- **Next round** only when a blocker or should was fixed in behaviour code, or a reviewer scored under the **Pass
+  score**. A comment, doc or format-only fix needs no new round.
+- **Low score with nothing open**: the next round's brief asks that reviewer what keeps its score under the pass score,
+  with evidence. A reason that verifies as a blocker or should is fixed. Otherwise the score stands: the review is
+  stuck on it, and the user decides.
+- **Budget**: **Max rounds**. Up to 2 more only for security, auth, data loss or concurrency, while a blocker with
+  evidence stays open.
 - **Stuck**: an id still disputed after two replies, or the budget ends with one open: show both sides in 2-3 lines
   each and the user decides. Budget end is not approval.
 
@@ -103,7 +119,8 @@ would apply again go to the decisions.
 The mode, the rounds, and a table with a row per reviewer and a column per round holding its verdict and score: every
 reviewer that ran, in every round, with `no score` when one gave none and `no reply` when one failed. A missing row
 means the review didn't run as this contract says; say so. Then the findings fixed and rejected, one line each; the
-nits declined, as follow-ups; and the diff size before and after review:
+nits declined, as follow-ups; and the diff size before and after review. When the mode was fallback because the user
+has no council configured, end with: `No council configured; run /agent-kit:setup to add one.`
 
 ```markdown
 ## Review

@@ -39,6 +39,16 @@ them all. "None" if the repo has none.
 What a spec here must also cover, beyond the template: actors to separate in User Stories, Implementation Decisions
 items, what Assumptions and Out of Scope always name. "None" if the template is enough.
 
+## Review
+
+How every review in this repo stops, whoever reviews (agent-kit's `reference/review-contract.md`). Leave a line out
+for its default.
+
+- **Max rounds**: 3
+- **Pass score**: none, or a score out of 10 every reviewer must reach before review stops.
+- **Also required**: none, or conditions that must hold before review stops (e.g. "smoke passes").
+- **Paid seats**: none, or the most one review may spend on paid council seats (e.g. `up to $3`).
+
 ## Docs
 
 Every doc `/slice`'s Docs step checks against the diff, with when each applies.
