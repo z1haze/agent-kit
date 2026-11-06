@@ -19,8 +19,9 @@ itself in a few files under `docs/agents/`.
 /plugin install agent-kit@agent-kit
 ```
 
-A repo can also list the plugin in its `.claude/settings.json`, so Claude Code offers to install it when the folder
-is trusted. It installs the `mattpocock-skills` plugin it depends on. For a private copy of this repo, your git needs
+Run these once per machine. A repo that lists the plugin in its `.claude/settings.json` registers the marketplace
+for you, so only the install is needed, but it doesn't install the plugin by itself. Installing agent-kit also
+installs the `mattpocock-skills` plugin it depends on. For a private copy of this repo, your git needs
 to reach it without a prompt (`gh auth login`, then `gh auth setup-git`).
 
 Then run `/agent-kit:setup` inside the repo.

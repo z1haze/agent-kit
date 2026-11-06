@@ -1,6 +1,6 @@
 {
   "name": "agent-kit",
-  "description": "Profile-driven /slice, /idea and /audit workflows with an evidence-only review contract",
+  "description": "Build in small, reviewed slices: /agent-kit:setup, :idea, :slice and :audit, with an evidence-only review contract",
   "author": {
     "name": "Stephen Hendricks"
   },
