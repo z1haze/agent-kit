@@ -6,7 +6,10 @@ rule below are the same, so every run judges findings the same way.
 
 ## Settings
 
-The repo sets these in its profile's `## Review` section; one it leaves out takes the default.
+The repo sets these in its profile's `## Review` section; one it leaves out takes the default. A setting the user
+states for this run, in their own words (e.g. "until each reviewer scores at least 9/10", "up to 5 rounds", "spend up
+to $5"), overrides the profile's for this run only; the rest keep the profile's or the default. State each override
+in the first round's mode line and in the report.
 
 | Setting | Default | Used by |
 |---|---|---|
