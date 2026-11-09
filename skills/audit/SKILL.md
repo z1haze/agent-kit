@@ -31,8 +31,10 @@ thing, which is why the default is the scope.
 3. **Areas**: use the areas in `docs/agents/audit-areas.md`, limited to those holding scoped files. When it's missing,
    split the codebase into three to six areas, each small enough for one agent to read whole, and write them there; a
    new path outside every area joins the closest one in that file.
-4. **Review**: run the review contract once per area, in parallel, with the target the scope's diff limited to the
-   area's paths, and as the intent the five things this skill looks for (listed above), so it reviews only those.
+4. **Review**: group the scoped areas into as few reviews as one reviewer can read whole, diff plus the callers it
+   touches (roughly 1,500 changed lines per review); merge areas that share files or concepts first, since
+   consistency and duplication only show inside one review. A scope under that is a single review. Run the review
+   contract once per group, in parallel, with the target the scope's diff limited to the group's paths, and as the intent the five things this skill looks for (listed above), so it reviews only those.
    Keep its ledger in the notes. Done when every area's contract stops at agreed or stuck.
 5. **Settle** with the user every confirmed finding an actor would notice, every drift where it's unclear whether the
    code or the doc is right, every one too big for this branch (it needs its own grill, or reshapes a module), and

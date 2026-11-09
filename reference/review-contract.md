@@ -26,10 +26,11 @@ Check once, at the first round, and state the mode in one line:
   **Paid seats** cap. It returns
   each seat's verdict, score and findings in the format below, or `council unavailable` when the user has no council
   configured or none of its seats can run.
-- **Fallback**: when council replies `council unavailable`, spawn exactly three agents of type
-  `agent-kit:reviewer` in parallel, one per lens: **intent** (does the change do what the intent says, for every
-  caller), **rules** (the rules, docs and decisions), **simplicity** (code, tests or guards the intent doesn't need).
-  Each gets the brief below plus its lens. Use no other agent type, whatever else is installed: an older `break-it`,
+- **Fallback**: when council replies `council unavailable`, spawn agents of type `agent-kit:reviewer` in parallel,
+  one per lens, each with the brief below plus its lens. For `/slice`, exactly three: **intent** (does the change do
+  what the intent says, for every caller), **rules** (the rules, docs and decisions), **simplicity** (code, tests or
+  guards the intent doesn't need). For `/audit`, exactly two: **cross-slice** (consistency, duplication, dead code)
+  and **rules** (rules and drift). Use no other agent type, whatever else is installed: an older `break-it`,
   `rules-reviewer` or a general-purpose agent doesn't follow this brief's reply format.
 
 The mode holds for every round of this review, unless council becomes unavailable partway; then later rounds use
