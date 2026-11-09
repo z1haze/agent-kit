@@ -22,8 +22,8 @@ Rules for every step:
 
 1. **Account**: the Claude folder is `$CLAUDE_CONFIG_DIR`, or `~/.claude` when it's unset. Say which, and which
    account `claude auth status` reports. Done when both are stated.
-2. **Dependencies**: `/agent-kit:slice` uses the `mattpocock-skills` plugin's `grilling`, `domain-modeling`, `tdd` and
-   `diagnosing-bugs` skills. When they aren't in this session's skill list, give the user
+2. **Dependencies**: `/agent-kit:slice` uses the `mattpocock-skills` plugin's `grilling`, `domain-modeling`, `tdd`,
+   `diagnosing-bugs` and `codebase-design` skills. When they aren't in this session's skill list, give the user
    `/plugin install mattpocock-skills@claude-plugins-official`, then `/reload-plugins`. Done when they're listed or the
    user has the commands.
 3. **Profile**: the repo's `docs/agents/workflow.md`, in the format of `${CLAUDE_PLUGIN_ROOT}/templates/workflow.md`.

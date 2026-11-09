@@ -66,8 +66,9 @@ Name the slice's kind in one line: **feature**, **bug**, or **no-code** (docs, c
 3. **Test plan**, except for no-code: write the spec template's Test plan table yourself, from the user stories and
    every probe the slice touches; a probe with nothing real behind it is dropped in one line. For each row, find the
    existing test file and the closest existing test it goes beside, and how a test makes it happen. Show the user only:
-   - rows marked **can't produce**, each with the design change that would let a test reach it (pull the decision into
-     a module a test reaches; inject the clock, randomness or dependency), or the option to drop it;
+   - rows marked **can't produce**, each with the design change that would let a test reach it, or the option to drop
+     it. When any row is marked, first call the Skill tool with `mattpocock-skills:codebase-design` and propose each
+     change in its terms (a deeper module or a new seam a test reaches; inject the clock, randomness or dependency);
    - rows whose source is weak, to keep or cut;
    - the probes you dropped, one line each.
 
